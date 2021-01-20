@@ -1,0 +1,51 @@
+<main>
+  <img
+    [src]="this.post.image"
+    (dblclick)="setLike()"
+    (click)="showDetails(true)"
+  />
+  <img
+    [src]="this.global.BOOKMARK_ICON"
+    [style]="'transform:scaleY('+(this.isSaved?'1.5)':'1)')+
+    ';top:'+(this.isSaved?'2%':'-2%')"
+    (click)="toggleSave()"
+    class="icon"
+  />
+  <div
+    [ngClass]="{ hover: this.isShowed, 'hover show': this.isShowed }"
+    (click)="showDetails(false)"
+  >
+    <p class="description">{{ this.post.description }}</p>
+    <p class="tags">{{ this.post.tags }}</p>
+  </div>
+</main>
+<header [ngClass]="{ invert: this.global.darkTheme }">
+  <div style="flex-grow: 1" [routerLink]="'/profile/' + this.post.owner._id">
+    <img
+      class="profile-image"
+      [ngClass]="{ invert: this.global.darkTheme }"
+      [src]="this.post.owner.image"
+    />
+  </div>
+  <div
+    style="flex-grow: 8; font-size: 2.5vh"
+    [routerLink]="'/profile/' + this.post.owner._id"
+  >
+    {{ this.post.owner.username }}
+  </div>
+  <div
+    style="flex-grow: 1; text-align: center; display: flex; align-items: center"
+  >
+    {{ this.post.likes.length }}
+    <img
+      [src]="
+        this.isLiked
+          ? this.global.HEART_LIKED_ICON
+          : this.global.HEART_OUTLINE_ICON
+      "
+      class="heart"
+      [ngClass]="{ invert: this.global.darkTheme && this.isLiked }"
+      (click)="toggleLike()"
+    />
+  </div>
+</header>

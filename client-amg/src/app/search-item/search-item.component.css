@@ -1,0 +1,45 @@
+section {
+    width: 90%;
+    height: 70px !important;
+    display: flex;
+    margin: 0 2.5% 2.5% 2.5%;
+    position: relative;
+}
+
+section div img {
+    height: 100%;
+    border-radius: 10%;
+}
+
+.datas {
+    display:flex;
+    justify-content: center;
+    flex-flow: column;
+    margin-left: 4%;
+}
+
+.username {
+    font-size: 1.25em;
+    height: 40%;
+    width: 100%;
+    font-weight:bold;
+    color:var(--font-primary-color);
+}
+
+.name {
+    font-size: .75em;
+    color: var(--font-secondary-color);
+    height: 30%;
+}
+
+.arrow{
+    position:absolute;
+    right:0;
+    height: 50% !important;
+    top:25%;
+    transform: rotate(180deg);
+}
+
+@media screen and (min-width: 600px) {
+
+}

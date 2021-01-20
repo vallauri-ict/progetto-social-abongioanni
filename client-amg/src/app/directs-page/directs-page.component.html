@@ -1,0 +1,6 @@
+<header-item [icon]="this.global.ADD_ICON" link="/directs/create">Messages</header-item>
+<section class="direct-list">
+  <direct-item *ngFor="let direct of this.directList" [direct]="direct"></direct-item>
+</section>
+<loader-item *ngIf="this.isLoading"></loader-item>
+

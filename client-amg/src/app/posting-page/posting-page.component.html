@@ -1,0 +1,75 @@
+<header-item>Add Post</header-item>
+<main [ngClass]=" { 'invert' : this.global.darkTheme}">
+  <label [for]="!this.secondStep?'file':''">
+    <img
+      *ngIf="!this.file"
+      
+      class="placeholder"
+      [src]="this.global.NOPHOTO_ICON"
+    />
+    <img
+      *ngIf="this.file"
+      
+      [src]="this.file"
+      [ngClass]=" { 'invert' : this.global.darkTheme && this.file}"
+    />
+    <div class="forward" (click)="setPost()" *ngIf="this.file" > 
+      <img [src]="this.loading?this.global.LOADER_ICON:this.global.ARROW_ICON" *ngIf="this.file" >
+    </div>
+    <div class="backward" *ngIf="this.secondStep"  (click)="goBack()"> 
+      <img [src]="this.global.ARROW_ICON" *ngIf="this.file" >
+    </div>
+    <input
+      type="file"
+      accept=".png,.jpg,.jpeg,.gif,.JPG"
+      id="file"
+      (change)="handleFileInput($event.target.files)"
+    />
+  </label>
+  <section
+    *ngIf="this.file && !this.secondStep"
+    
+    [ngClass]=" { 'invert' : this.global.darkTheme}"  >
+  <article>
+    <div>
+      <web-photo-filter
+        [src]="this.fileOriginal"
+      ></web-photo-filter>
+      <img [src]="this.fileOriginal" />
+      <div class="hover"  (click)="changeFilter('original')">
+        Original
+      </div>
+    </div>
+  </article>
+    <article *ngFor="let filter of this.filters">
+      <div>
+        <web-photo-filter
+          (filterLoad)="loadFilterPreview($event, filter)"
+          [filter]="filter"
+          [src]="this.fileOriginal"
+        ></web-photo-filter>
+        <img [src]="this.src[filter]" />
+        <div class="hover" (click)="changeFilter(filter)">
+          {{filter}}
+        </div>
+      </div>
+    </article>
+  </section>
+  <input
+    *ngIf="this.secondStep"
+    
+    #description
+    (keyup)="setDescription(description.value)"
+    style="margin-top: 5%"
+    type="text"
+    placeholder="Description"
+  />
+  <input
+    *ngIf="this.secondStep"
+    
+    #tag
+    (keyup)="setTag(tag.value)"
+    type="text"
+    placeholder="#Tag1#Tag2"
+  />
+</main>

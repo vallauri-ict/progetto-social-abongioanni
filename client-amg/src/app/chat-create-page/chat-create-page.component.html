@@ -1,0 +1,59 @@
+<header [class]="this.global.darkTheme ? 'invert' : ''">
+  <div class="title">New chat</div>
+  <img
+    (click)="createChat(name.value)"
+    [src]="this.isLoading ? this.global.LOADER_ICON : this.global.TICK_ICON"
+  />
+</header>
+<main [class]="global.darkTheme ? 'invert' : ''">
+  <label for="txtUsername">name</label><br />
+  <input #name id="txtName" type="text" placeholder="chat name" [value]="" />
+  <div class="profile-img">
+    <label class="img" for="file"></label>
+    <img
+      [src]="this.image"
+      (click)="triggerFile(file)"
+      [ngClass]="{
+        invert: this.global.darkTheme && this.image != this.global.CHAT_ICON
+      }"
+    />
+    <input
+      type="file"
+      accept=".png,.jpg,.jpeg,.gif,.JPG"
+      id="file"
+      #file
+      (change)="handleFileInput($event.target.files)"
+    />
+  </div>
+  <br />
+  <header>
+    <div class="title">Add partecipants</div>
+  </header>
+  <article>
+    <section
+      *ngFor="let user of this.users"
+      [ngClass]="{ invert: this.global.darkTheme }"
+      #elemUser
+      [id]="user._id"
+      (click)="selectUser(elemUser.id)"
+    >
+      <div style="width: 20%; text-align: center">
+        <img [src]="user.image" />
+      </div>
+      <div class="datas">
+        <div class="username" [ngClass]="{ invert: this.global.darkTheme }">
+          {{ user.username }}
+        </div>
+        <div class="name">{{ user.first }} {{ user.last }}</div>
+      </div>
+      <img
+        [ngClass]="{ invert: this.global.darkTheme, tick: true }"
+        [src]="
+          this.partecipants.includes(elemUser.id)
+            ? this.global.TICK_ICON
+            : this.global.NOTICK_ICON
+        "
+      />
+    </section>
+  </article>
+</main>

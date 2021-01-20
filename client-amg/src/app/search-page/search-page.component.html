@@ -1,0 +1,138 @@
+<header-item>
+  Search
+</header-item>
+<main [class]="global.darkTheme ? 'invert' : ''">
+  <input
+    autocomplete="off"
+    id="txtSearch"
+    type="text"
+    placeholder="Cerca"
+    #input
+    (keyup)="
+      this.isUser
+        ? searchUser($event, input.value)
+        : searchPost($event, input.value)
+    "
+  />
+  <div class="box-wrapper">
+    <div
+      (click)="toggle(tabs, true)"
+      [ngClass]="{
+        box: true,
+        active: this.isUser,
+        invert: this.global.darkTheme && this.isUser
+      }"
+    >
+      <div>
+        <img
+          [src]="this.global.USER_ICON"
+          [ngClass]="{ invert: this.isUser }"
+        />
+        Users
+      </div>
+    </div>
+    <div
+      (click)="toggle(tabs, false)"
+      [ngClass]="{
+        box: true,
+        active: !this.isUser,
+        invert: this.global.darkTheme && !this.isUser
+      }"
+    >
+      <div>
+        <img
+          [src]="this.global.NOPHOTO_ICON"
+          [ngClass]="{ invert: !this.isUser }"
+          style="width: 25%"
+        />
+        Posts
+      </div>
+    </div>
+  </div>
+  <tabs #tabs>
+    <tab [tabTitle]="'Users'" [active]="this.isUser">
+      <label *ngIf="this.isLoading" >
+        <img [src]="this.global.LOADER_ICON" />
+      </label>
+
+      <label
+        for="txtSearch"
+        *ngIf="
+          !this.isLoading && !isFirstSearchUser && this.resultsUser.length == 0
+        "
+        
+        [ngClass]="{ invert: global.darkTheme, placeholder: true }"
+      >
+        <img [src]="this.global.NORESULTS_ICON" /><br />
+        Not Found
+      </label>
+      <label
+        for="txtSearch"
+        *ngIf="isFirstSearchUser && !isLoading"
+        [ngClass]="{ invert: global.darkTheme, placeholder: true }"
+      >
+        <img [src]="this.global.RESULTS_ICON" /><br />
+        Type to search users
+      </label>
+
+      <main
+        *ngIf="this.resultsUser.length > 0"
+        
+        [class]="global.darkTheme ? 'invert' : ''"
+        (scroll)="onScrollUsers($event)"
+      >
+        <search-item
+          *ngFor="let user of this.resultsUser"
+          [ngClass]="{
+            invert: global.darkTheme,
+            null: this.global.profile._id == user._id
+          }"
+          [user]="user"
+        ></search-item>
+      </main>
+    </tab>
+    <tab
+      [tabTitle]="'Posts'"
+      [active]="!this.isUser"
+      [ngClass]="{ invert: this.global.darkTheme }"
+    >
+      <label *ngIf="this.isLoading" >
+        <img [src]="this.global.LOADER_ICON" />
+      </label>
+
+      <label
+        for="txtSearch"
+        *ngIf="
+          !this.isLoading && !isFirstSearchPost && this.resultsPost.length == 0
+        "
+        
+        [ngClass]="{ placeholder: true }"
+      >
+        <img [src]="this.global.NORESULTS_ICON" /><br />
+        Not Found
+      </label>
+      <label
+        for="txtSearch"
+        *ngIf="isFirstSearchPost && !isLoading"
+        
+        [ngClass]="{ placeholder: true }"
+      >
+        <img [src]="this.global.RESULTS_ICON" /><br />
+        Type to search posts
+      </label>
+      <div [ngClass]="{ invert: this.global.darkTheme }">
+        <gallery-list
+          [list]="this.resultsPost"
+          (click)="showDetails($event)"
+          (scroll)="onScrollPosts($event)"
+        ></gallery-list>
+      </div>
+    </tab>
+  </tabs>
+</main>
+
+<details-item
+  #details
+  [preview]="this.prev"
+  [post]="this.postDetails"
+></details-item>

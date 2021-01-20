@@ -1,0 +1,22 @@
+header {
+    height: 9vh;
+    top: 0;
+    width: 90%;
+    padding-right:10%;
+    padding-top: 5vh;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    background-color: var(--bg-light) !important;
+}
+
+header img {
+    height: 30%;
+}
+
+.title {
+    font-size: 4vh;
+    margin-left: 6%;
+}

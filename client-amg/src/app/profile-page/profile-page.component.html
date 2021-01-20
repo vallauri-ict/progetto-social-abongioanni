@@ -1,0 +1,85 @@
+<header-item *ngIf="this.profile"
+>
+  {{
+    this.profile._id == this.global.profile._id
+      ? "Your profile"
+      : this.profile.first + " " + this.profile.last
+  }}
+</header-item>
+
+<main *ngIf="this.profile" >
+  <section class="profile-top">
+    <div class="profile-img">
+      <img [src]="this.profile.image" />
+      <img [src]="this.profile.image" [ngClass]="{ shadow: true }" />
+    </div>
+    <div class="profile-stats" [ngClass]="{ invert: this.global.darkTheme }">
+      <div>
+        <p>{{ this.profile.posts.length }}</p>
+        <span>post</span>
+      </div>
+      <div>
+        <p>{{ this.profile.followers }}</p>
+        <span>followers</span>
+      </div>
+      <div>
+        <p>{{ this.profile.following.length }}</p>
+        <span>following</span>
+      </div>
+    </div>
+  </section>
+  <section
+    class="profile-description"
+    [ngClass]="{ invert: this.global.darkTheme }"
+  >
+    <!-- <div class="username">{{ this.profile.username }}</div> -->
+    <div class="fullname" *ngIf="this.profile && this.global.profile" >
+      {{ this.profile.first }} {{ this.profile.last }}
+      <div *ngIf="this.profile._id == this.global.profile._id" >
+        <img
+          class="icon"
+          [src]="this.global.COG_ICON"
+          style="height: 4.25vh"
+          routerLink="/settings"
+        />
+        <img
+          class="icon"
+          [src]="this.global.SAVED_ICON"
+          style="height: 4.25vh; margin-right: 2.5vh"
+          routerLink="/saved"
+        />
+        <img class="icon" [src]="this.global.ADD_ICON" routerLink="/posting" />
+      </div>
+      <div *ngIf="this.profile._id != this.global.profile._id" >
+        <img
+          (click)="toggleFollow()"
+          class="icon"
+          [src]="
+            this.global.profile.following.includes(this.profile._id)
+              ? this.global.UNFOLLOW_ICON
+              : this.global.FOLLOW_ICON
+          "
+          style="height: 4.25vh"
+        />
+      </div>
+    </div>
+    <div class="bio">
+      <input type="checkbox" id="expanded" />
+      <p>{{ this.profile.bio }}</p>
+      <label for="expanded" role="button">Read more</label>
+    </div>
+  </section>
+  <gallery-list
+    [list]="this.profile.posts"
+    (click)="openDetails($event)"
+  ></gallery-list>
+</main>
+
+<details-item
+  #details
+  [preview]="this.prev"
+  [post]="this.postDetails"
+></details-item>
+
+<loader-item *ngIf="this.isLoading"></loader-item>
+

@@ -1,0 +1,15 @@
+<div class="wrapper" [routerLink]="'/chat/' + direct._id">
+  <div class="image">
+    <img [src]="direct.image" />
+  </div>
+  <div class="details" [ngClass]="{ invert: this.global.darkTheme }">
+    <div class="name">{{ direct.name }}</div>
+    <div class="last">
+      <p *ngIf="direct.messages.length == 0">You have been added!</p>
+      <p *ngIf="direct.messages.length > 0">
+        {{ direct.messages[0].owner.username + ": " + direct.messages[0].text }}
+      </p>
+    </div>
+    <div class="date">{{ direct.last }}</div>
+  </div>
+</div>

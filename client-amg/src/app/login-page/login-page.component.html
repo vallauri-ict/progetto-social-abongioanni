@@ -1,0 +1,323 @@
+<div class="wrapper">
+  <body>
+    <div class="animation01">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="animation02">
+      <div></div>
+      <div></div>
+    </div>
+    <div class="animation03">
+      <div class="circle">
+        <div class="circle_element01"></div>
+      </div>
+      <div class="circle">
+        <div class="circle_element02"></div>
+      </div>
+      <div class="circle">
+        <div class="circle_element03"></div>
+      </div>
+      <div class="animation04">
+        <div class="line_wrapper line_wrapper01">
+          <span class="line line01"></span>
+        </div>
+        <div class="rotate45">
+          <div class="line_wrapper line_wrapper02">
+            <span class="line line02"></span>
+          </div>
+        </div>
+        <div class="line_wrapper line_wrapper03">
+          <span class="line line03"></span>
+        </div>
+        <div class="rotate135">
+          <div class="line_wrapper line_wrapper04">
+            <span class="line line04"></span>
+          </div>
+        </div>
+        <div class="line_wrapper line_wrapper05">
+          <span class="line line05"></span>
+        </div>
+        <div class="rotate-135">
+          <div class="line_wrapper line_wrapper06">
+            <span class="line line06"></span>
+          </div>
+        </div>
+        <div class="line_wrapper line_wrapper07">
+          <span class="line line07"></span>
+        </div>
+        <div class="rotate-45">
+          <div class="line_wrapper line_wrapper08">
+            <span class="line line08"></span>
+          </div>
+        </div>
+      </div>
+      <div class="animation05">
+        <div class="double_wrapper02 green02">
+          <div class="double_wrapper01 green01">
+            <div class="double_block green00"></div>
+          </div>
+        </div>
+        <div class="double_wrapper02 navy02">
+          <div class="double_wrapper01 navy01">
+            <div class="double_block navy00"></div>
+          </div>
+        </div>
+        <div class="double_wrapper02 yellow02">
+          <div class="double_wrapper01 yellow01">
+            <div class="double_block yellow00"></div>
+          </div>
+        </div>
+        <div class="double_wrapper02 blue02">
+          <div class="double_wrapper01 blue01">
+            <div class="double_block blue00"></div>
+          </div>
+        </div>
+        <div class="double_wrapper02 red02">
+          <div class="double_wrapper01 red01">
+            <div class="double_block red00"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="animation06">
+      <div class="rhombus05">
+        <div class="rhombus04">
+          <div class="rhombus03">
+            <div class="rhombus02">
+              <div class="rhombus01"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="animation07">
+      <div class="circle">
+        <div class="circle_element01"></div>
+      </div>
+      <div class="line_wrapper line_wrapper01">
+        <span class="line line01"></span>
+      </div>
+      <div class="rotate60">
+        <div class="line_wrapper line_wrapper02">
+          <span class="line line02"></span>
+        </div>
+      </div>
+      <div class="rotate120">
+        <div class="line_wrapper line_wrapper03">
+          <span class="line line03"></span>
+        </div>
+      </div>
+      <div class="line_wrapper line_wrapper04">
+        <span class="line line04"></span>
+      </div>
+      <div class="rotate-120">
+        <div class="line_wrapper line_wrapper05">
+          <span class="line line05"></span>
+        </div>
+      </div>
+      <div class="rotate-60">
+        <div class="line_wrapper line_wrapper06">
+          <span class="line line06"></span>
+        </div>
+      </div>
+    </div>
+    <div class="animation08">
+      <div>
+        <div id="wrapper">
+          <img [src]="this.global.BACKGROUND" class="bg" />
+
+          <form class="formLogin" *ngIf="this.isLogin"  (keyup.enter)="login()">
+            <section [ngClass]="{ img: this.img }">
+              Login
+              <img *ngIf="this.img" [src]="this.img" />
+              <img *ngIf="this.img" [src]="this.img" class="shadow" />
+            </section>
+
+            <input
+              autocomplete="off"
+              type="text"
+              placeholder="Username"
+              [ngClass]="{ err: this.errorUsername }"
+              #txtUsername
+              (keyup)="setUsername(txtUsername.value)"
+            />
+            <input
+              autocomplete="off"
+              type="password"
+              placeholder="Password"
+              #txtPassword
+              (keyup)="setPassword(txtPassword.value)"
+            />
+            <button type="button" (click)="login()">Log in</button>
+
+            <span style="text-align: right" class="span" (click)="signUpSetup()"
+              >Sign up!</span
+            >
+            <span
+              style="left: 7.5%"
+              class="span"
+              (click)="passwordRecovery(txtUsername.value)"
+              >Forgot password</span
+            >
+          </form>
+          <!-- FORM SIGNUP -->
+          <form class="formSignup" *ngIf="!this.isLogin" >
+            <main>
+              <div>
+                <label for="txtUsername">{{
+                  this.errorUsername ? "username already taken!" : "username"
+                }}</label
+                ><br />
+                <input
+                  [ngClass]="{ err: this.errorUsername }"
+                  #username
+                  id="txtUsername"
+                  (keyup)="setValue('username', username.value)"
+                  type="text"
+                  placeholder="usernamme"
+                />
+              </div>
+              <div id="imgWrapper">
+                <label class="img" for="file"> </label>
+                <input
+                  type="file"
+                  accept=".png,.jpg,.jpeg,.gif,.JPG"
+                  id="file"
+                  (change)="handleFileInput($event.target.files)"
+                />
+                <img *ngIf="this.img" [src]="this.img" />
+              </div>
+              <div>
+                <label for="txtEmail">{{
+                  this.errorEmail ? "e-mail already taken!" : "e-mail"
+                }}</label
+                ><br />
+                <input
+                  [ngClass]="{ err: this.errorEmail }"
+                  #email
+                  id="txtEmail"
+                  (keyup)="setValue('email', email.value)"
+                  type="text"
+                  placeholder="email"
+                />
+              </div>
+              <br />
+              <div style="width: 100% !important">
+                <label>bio</label>
+                <textarea
+                  (keyup)="setValue('bio', bio.value)"
+                  #bio
+                  rows="5"
+                  id="txtBio"
+                  type="textarea"
+                  placeholder="Enter bio"
+                ></textarea>
+              </div>
+              <div>
+                <label for="txtName">name</label>
+
+                <input
+                  #name
+                  id="txtName"
+                  (keyup)="setValue('nome', name.value)"
+                  type="text"
+                  placeholder="name"
+                />
+              </div>
+
+              <div>
+                <label for="txtSurname">surname</label>
+
+                <input
+                  #surname
+                  id="txtSurname"
+                  (keyup)="setValue('cognome', surname.value)"
+                  type="text"
+                  placeholder="surname"
+                />
+              </div>
+              <div>
+                <label for="txtDate">date of birth</label>
+                <input
+                  #dob
+                  id="txtDate"
+                  (change)="setValue('date-of-birth', dob.value)"
+                  type="date"
+                  placeholder="date of birth"
+                />
+              </div>
+              <div>
+                <label>creepy theme</label>
+
+                <article class="switch-wrapper">
+                  <label class="switch" for="theme">
+                    <input
+                      id="theme"
+                      type="checkbox"
+                      #theme
+                      (click)="setValue('theme', theme.checked)"
+                    />
+                    <span class="slider round"></span>
+                  </label>
+                </article>
+              </div>
+              <div>
+                <label>enter password</label>
+                <input
+                  #pwdv
+                  id="txtPwdV"
+                  (keyup)="setValue('password', pwdv.value)"
+                  type="password"
+                  placeholder="Enter password"
+                />
+              </div>
+              <div>
+                <label>confirm password</label>
+
+                <input
+                  #pwdn
+                  id="txtPwdN"
+                  (keyup)="verifyPwd(pwdv.value, pwdn.value)"
+                  type="password"
+                  placeholder="Confirm password"
+                />
+              </div>
+
+              <button
+                type="button"
+                [ngClass]="{
+                  disabled:
+                    !this.allOk ||
+                    !this.pwdOk ||
+                    this.errorEmail ||
+                    this.errorUsername
+                }"
+                [disabled]="
+                  !this.allOk ||
+                  !this.pwdOk ||
+                  this.errorEmail ||
+                  this.errorUsername
+                "
+                (click)="signUp()"
+              >
+                Sign up!
+              </button>
+            </main>
+            <span style="text-align: right" class="span" (click)="loginSetup()"
+              >Log in!</span
+            >
+          </form>
+        </div>
+      </div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </body>
+</div>
+<loader-item *ngIf="this.isLoading"></loader-item>

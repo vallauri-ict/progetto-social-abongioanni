@@ -1,0 +1,120 @@
+<header [class]="global.darkTheme ? 'invert' : ''">
+  <div class="title">Settings</div>
+  <img
+    (click)="saveSetting()"
+    [src]="
+      this.isLoading
+        ? this.global.LOADER_ICON
+        : this.global.TICK_ICON
+    "
+  />
+</header>
+<main [class]="global.darkTheme ? 'invert' : ''">
+  <label for="txtUsername">username</label><br />
+  <input
+    #username
+    id="txtUsername"
+    (keyup)="setValue('username', username.value)"
+    type="text"
+    placeholder="usernamme"
+    [value]="this.global.profile.username"
+  />
+  <div class="profile-img">
+    <label class="img" for="file"></label>
+    <img [src]="this.values.image" (click)="triggerFile(file)" [class]="this.global.darkTheme ? 'invert' : ''" />
+    <input
+      type="file"
+      accept=".png,.jpg,.jpeg,.gif,.JPG"
+      id="file"
+      #file
+      (change)="handleFileInput($event.target.files)"
+    />
+  </div>
+  <br />
+  <label for="txtEmail">e-mail</label><br />
+  <input
+    #email
+    id="txtEmail"
+    (keyup)="setValue('email', email.value)"
+    type="text"
+    placeholder="email"
+    [value]="this.global.profile.email"
+  /><br />
+  <br />
+  <label>bio</label>
+  <textarea
+    (keyup)="setValue('bio', bio.value)"
+    #bio
+    rows="5"
+    id="txtBio"
+    type="textarea"
+    placeholder="Enter bio"
+    >{{ this.global.profile.bio }}</textarea
+  >
+  <label for="txtName">name</label>
+  <label for="txtSurname">surname</label>
+
+  <input
+    #name
+    id="txtName"
+    (keyup)="setValue('nome', name.value)"
+    type="text"
+    placeholder="name"
+    [value]="this.global.profile.first"
+  />
+  <input
+    #surname
+    id="txtSurname"
+    (keyup)="setValue('cognome', surname.value)"
+    type="text"
+    placeholder="surname"
+    [value]="this.global.profile.last"
+  />
+  <label for="txtDate">date of birth</label>
+  <label>creepy theme</label>
+  <input
+    #dob
+    id="txtDate"
+    (change)="setValue('date-of-birth', dob.value)"
+    type="date"
+    placeholder="date of birth"
+    [value]="this.global.profile['date-of-birth']"
+  />
+
+  <div class="switch-wrapper">
+    <label class="switch" for="theme">
+      <input
+        id="theme"
+        type="checkbox"
+        #theme
+        (click)="setValue('theme', theme.checked)"
+        [checked]="this.global.profile.theme"
+      />
+      <span class="slider round"></span>
+    </label>
+  </div>
+
+  <label>enter password</label>
+  <label>change password</label>
+  <input
+    #pwdv
+    id="txtPwdV"
+    (keyup)="verifyPwd(pwdv.value)"
+    type="password"
+    placeholder="Enter password"
+  />
+  <input
+    #pwdn
+    id="txtPwdN"
+    (keyup)="setValue('password', pwdn.value)"
+    type="text"
+    [ngClass]="{ disabled: !this.pwdOk }"
+    [disabled]="!this.pwdOk ? 'disabled' : ''"
+    placeholder="New password"
+  />
+  <label>log out</label>
+  <input #btnLog id="btnLog" type="button" value="log out" [class]="global.darkTheme ? 'invert' : ''" (click)="logout()"/>
+  <label>delete account</label>
+  <input #btn id="btnDelete" type="button" value="delete" [class]="global.darkTheme ? 'invert' : ''" (click)="deleteAccount()"/>
+
+</main>

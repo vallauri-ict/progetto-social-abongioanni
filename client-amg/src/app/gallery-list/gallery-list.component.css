@@ -1,0 +1,37 @@
+.profile-gallery {
+    width: 100%;
+    margin: 2vh auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 8vh !important;
+}
+
+.profile-gallery div {
+    width: 42.5%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-gallery div:nth-child(odd) {
+    margin-left: 5%;
+    margin-right: 2.5%;
+}
+
+.profile-gallery div:nth-child(even) {
+    margin-right: 5%;
+    margin-left: 2.5%;
+}
+
+.profile-gallery div gallery-item {
+    z-index: 0;
+}
+
+@media screen and (min-width: 600px) {
+    .profile-gallery div:nth-child(odd) {
+        margin-left: 4%;
+        margin-right: 2.5%;
+    }
+}

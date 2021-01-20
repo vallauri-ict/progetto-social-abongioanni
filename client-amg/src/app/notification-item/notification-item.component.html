@@ -1,0 +1,11 @@
+<section [ngClass]="{ invert: this.global.darkTheme }">
+  <div style="width:20%">
+    <img [src]="this.msg.owner.image"  [ngClass]="{ invert: this.global.darkTheme }"/>
+  </div>
+  <div class="datas">
+    <div class="username">{{ this.msg.name }}</div>
+    <div class="name">
+      <p>{{ this.msg.owner.username }}: {{ this.msg.text }}</p>
+    </div>
+  </div>
+</section>

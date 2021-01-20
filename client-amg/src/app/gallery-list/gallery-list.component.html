@@ -1,0 +1,36 @@
+<section
+  class="profile-gallery"
+  [ngsRevealSet]="{ reset: true }"
+  [ngsInterval]="0"
+  [ngsSelector]="'.item'"
+  (scroll)="onScroll($event)"
+>
+  <div>
+    <gallery-item
+      #galleryItem
+      ngsReveal
+      *ngFor="let item of this.list; let i = index"
+      (click)="onClick($event,galleryItem)"
+      [post]="item"
+      [ngClass]="{
+        item: !this.global.darkTheme,
+        null: i % 2 != 0,
+        open: galleryItem.isOpen
+      }"
+    ></gallery-item>
+  </div>
+  <div>
+    <gallery-item
+      #galleryItem
+      ngsReveal
+      *ngFor="let item of this.list; let i = index"
+      (click)="onClick($event,galleryItem)"
+      [post]="item"
+      [ngClass]="{
+        item: !this.global.darkTheme,
+        null: i % 2 == 0,
+        open: galleryItem.isOpen
+      }"
+    ></gallery-item>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+div {
+    padding: 0;
+    display: inline-block;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 10vh;
+    max-height: 40vh;
+    margin-top:2.5vw;
+    margin-bottom: 2.5vw;
+    width: 42.5vw !important;
+    position:relative;
+    transform: scale(1);
+    transition: all .2s;
+}
+
+div img{
+    width:100%;
+    border-radius: 1em;
+}
+
+.shadow{
+    position:absolute;
+    top:1vh;
+    left:0;
+    z-index:-1 !important;
+    filter:blur(7px);
+    opacity:0;
+    transition: all .2s;
+}
+
+div:hover{
+    transform: scale(1.01);
+}
+
+div:hover .shadow{
+    opacity:.4;
+}
+
+@media screen and (min-width: 600px) {
+    div {
+        margin-top:1.25vw;
+        margin-bottom: 1.25vw;
+        width: 21.75vw !important;
+    }
+}

@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 9vh;
+    top: 0;
+    width: 90%;
+    padding-top: 5vh;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 4vh;
+    margin-left: 6%;
+}

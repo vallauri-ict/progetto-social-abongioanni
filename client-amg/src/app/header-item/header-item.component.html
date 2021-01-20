@@ -1,0 +1,6 @@
+<header [ngClass]="{ invert: this.global.darkTheme }">
+  <div class="title">
+    <ng-content></ng-content>
+  </div>
+  <img [ngClass]="{ invert: this.global.darkTheme && invert }" *ngIf="this.routerLink"  [routerLink]="this.routerLink" [src]="this.icon">
+</header>

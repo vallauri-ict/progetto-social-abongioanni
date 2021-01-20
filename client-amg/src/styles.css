@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Product Sans';
+    src: url("./assets/fonts/Product Sans Regular.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: 'Product Sans';
+    color: var(--font-color);
+}
+
+:root {
+    --bg-light: #efefef;
+    --bg-dark: #111;
+    --font-primary-color: #111;
+    --font-primary-color-invert:#fff;
+    --font-secondary-color: #888;
+    --font-tertiary-color: #AAA;
+    --border-color:#888;
+    --red:#ED4E5A;
+    --orange:#ed884e;
+    --blue:#2196F3;
+    --light-blue:#64c1ff;
+    --dark-blue: #115b97;
+    --error-color:#581818;
+    --disabled-color:#ccc;
+    --shadow-color:rgba(136, 136, 136, 1);
+    --dark-grey: #393B41;
+    --gery:#4e4e53;
+    --light-grey:#dedede;
+    --left-chat-color:#ccc;
+    --right-chat-color:#ddd;
+    --transparent:#00000000;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    -ms-overflow-style: none;
+}
+
+.dark {
+    background-color: var(--bg-dark) !important;
+}
+
+.light {
+    background-color: var(--bg-light) !important;
+}
+
+.invert {
+    filter: invert(1);
+}
+
+.null {
+    display: none;
+}

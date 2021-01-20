@@ -1,0 +1,31 @@
+div{
+    height:100%;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 10;
+    text-align: center;
+    background-color: var(--bg-dark);
+}
+img{
+    position:absolute;
+}
+.icon{
+    left: 47.5%;
+    width:5%;
+}
+
+.loader{
+    left: 35%;
+    width:30%;
+}
+@media screen and (min-width: 600px) {
+  .loader{
+      width:15%;
+      left:42.5%;
+  }
+}

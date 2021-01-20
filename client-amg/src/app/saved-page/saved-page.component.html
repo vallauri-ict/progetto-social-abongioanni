@@ -1,0 +1,13 @@
+<header-item>
+  Saved Posts
+</header-item>
+<gallery-list
+  [list]="this.posts"
+  (click)="openDetails($event)"
+  (scroll)="onScroll($event)"
+></gallery-list>
+<details-item
+  #details
+  [preview]="this.prev"
+  [post]="this.postDetails"
+></details-item>

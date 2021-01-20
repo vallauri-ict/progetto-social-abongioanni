@@ -1,0 +1,18 @@
+<header-item link="/search" [icon]="this.global.SEARCH_ICON">
+  The Feed
+</header-item>
+<ngx-pull-to-refresh
+  spinnerSize="30px"
+  distanceForRefresh="40"
+  [isEnable]="this.atTop"
+  (refresh)="updateHome($event)"
+  style="display: block; height: 100%"
+>
+  <main
+    (scroll)="onScroll($event)"
+    #main
+  >
+    <post-item *ngFor="let post of this.posts" [post]="post"></post-item>
+    <div *ngIf="!this.posts" [ngClass]="{invert:this.global.darkTheme}">Non ci sono risultati</div>
+  </main></ngx-pull-to-refresh
+>

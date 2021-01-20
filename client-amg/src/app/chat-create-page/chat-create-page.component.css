@@ -1,0 +1,114 @@
+header {
+    height: 9vh;
+    top: 0;
+    width: 90%;
+    padding-top: 5vh;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+header img {
+    height: 30%;
+}
+
+.title {
+    font-size: 4vh;
+    margin-left: 6%;
+}
+
+.profile-img {
+    display: inline-block;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    right: 10%;
+}
+
+.profile-img img {
+    display: inline-block;
+    border-radius: 1em;
+    width: 100%;
+}
+
+main {
+    width: 100%;
+    position: relative;
+    overflow: scroll;
+    padding-bottom: 10vh;
+}
+
+main label {
+    display: inline-block;
+    width: 43%;
+    margin-left: 5%;
+    color: var(--font-secondary-color);
+}
+
+main label.img {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%
+}
+
+main input ,textarea{
+    border: 1px solid var(--border-color);
+    margin: 2% 0 2% 5%;
+    background-color: var(--bg-light);
+    height: 5vh;
+    padding-left: 15px;
+    border-radius: .75em;
+    width: 52.5%;
+    font-size: 2vh;
+    transition: all .15s;
+}
+
+input[type=file] {
+    display: none;
+}
+
+section {
+    width: 90%;
+    height: 70px !important;
+    display: flex;
+    margin: 0 2.5% 2.5% 2.5%;
+    position: relative;
+}
+
+section div img {
+    height: 100%;
+    border-radius: 10%;
+}
+
+.datas {
+    display:flex;
+    justify-content: center;
+    flex-flow: column;
+    margin-left: 4%;
+    height:100%;
+    width:100%;
+}
+
+.username {
+    font-size: 1.25em;
+    height: 40%;
+    width: 100%;
+    font-weight:bold;
+    color:var(--font-primary-color);
+}
+
+.name {
+    font-size: .75em;
+    color: var(--font-secondary-color);
+    height: 30%;
+}
+
+.tick{
+    position:absolute;
+    right:0;
+    height: 50% !important;
+    top:25%;
+}

@@ -1,0 +1,37 @@
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<nav [class]="global.darkTheme ? 'invert' : ''" *ngIf="this.global.cookie" >
+  <div routerLink="home" routerLinkActive #rlaH="routerLinkActive">
+    <img
+      class="icon"
+      [src]="this.global.HOME_ICON"
+      [ngStyle]="{ filter: rlaH.isActive ? 'invert(.3)' : 'invert(.6)' }"
+    />
+  </div>
+  <div
+    [routerLink]="'profile/' + this.global.cookie._id"
+    routerLinkActive
+    #rlaPr="routerLinkActive"
+    style="display: flex; align-items: center"
+  >
+    <img
+      class="icon"
+      [src]="this.global.USER_ICON"
+      [ngStyle]="{ filter: rlaPr.isActive ? 'invert(.3)' : 'invert(.6)' }"
+      [class]="this.global.darkTheme ? 'invert' : ''"
+    />
+  </div>
+  <div routerLink="directs" routerLinkActive #rlaM="routerLinkActive">
+    <img
+      class="icon"
+      [src]="this.global.CHAT_ICON"
+      [ngStyle]="{ filter: rlaM.isActive ? 'invert(.3)' : 'invert(.6)' }"
+    />
+  </div>
+</nav>
+
+<notification-item *ngIf="this.isNotification" [message]="this.message"></notification-item>
+
+<loader-item *ngIf="this.isLoading"></loader-item>

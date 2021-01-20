@@ -1,0 +1,12 @@
+<header-item>{{this.chatDetails.name}}</header-item>
+<img [src]="this.chatDetails.image">
+<main>
+    Partecipants
+    <section>
+        <search-item *ngFor="let user of this.chatDetails.partecipants" [user]="user" [ngClass]="{
+            null: this.global.profile._id == user._id
+        }"></search-item>
+    </section>
+</main>
+
+<loader-item *ngIf="this.isLoading"></loader-item>

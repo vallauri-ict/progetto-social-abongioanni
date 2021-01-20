@@ -1,0 +1,61 @@
+section {
+    background-color: var(--light-grey);
+    position: absolute;
+    top: -8vh;
+    left: 2.5%;
+    height: 8vh;
+    width: 95%;
+    animation-name: pop-in;
+    animation-duration: 4s;
+    display: flex;
+    z-index: 10 !important;
+    border-radius: 1em;
+}
+
+section div img {
+    height: 100%;
+    border-radius: 10%;
+}
+
+.datas {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    margin-left: 4%;
+}
+
+.username {
+    font-size: 1.25em;
+    height: 40%;
+    width: 100%;
+    font-weight: bold;
+    color: var(--font-primary-color);
+}
+
+.name {
+    font-size: .9em;
+    color: var(--font-secondary-color);
+    height: 30%;
+}
+
+.name p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+@keyframes pop-in {
+    0% {
+        top: -8vh;
+    }
+    10% {
+        top: 1vh;
+    }
+    80% {
+        top: 1vh;
+    }
+    90% {
+        top: -8vh;
+    }
+}

@@ -1,0 +1,52 @@
+<header-item
+  *ngIf="this.chatName"
+  
+  [link]="'/chat/' + this.chatId + '/details'"
+  [routerLink]="'/chat/' + this.chatId + '/details'"
+  [icon]="this.global.INFO_ICON"
+>
+  {{ this.chatName }}
+</header-item>
+
+<loader-item *ngIf="this.isLoading"></loader-item>
+
+<div #chat class="chat-wrapper" id="chat" (scroll)="onScroll($event)" (wheel)="onScroll($event)">
+  <div
+    *ngFor="let message of this.messageList"
+    
+    [ngClass]="{
+      right: this.global.profile._id == message.owner._id,
+      left: this.global.profile._id != message.owner._id
+    }"
+    #item
+  >
+    <p
+      [ngClass]="{
+        invert: this.global.darkTheme
+      }"
+    >
+      {{ message.text }}
+    </p>
+    <section>
+      <img [src]="message.owner.image" />
+      <span [routerLink]="'/profile/' + message.owner._id">{{
+        message.owner.username
+      }}</span>
+    </section>
+  </div>
+</div>
+<footer
+  class="chat-input"
+  [ngClass]="{
+    invert: this.global.darkTheme
+  }"
+>
+  <input
+    type="text"
+    placeholder="Type"
+    #txt
+    class="txt"
+    (keyup.enter)="sendText(txt)"
+  />
+  <button class="send" (click)="sendText(txt)"></button>
+</footer>

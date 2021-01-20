@@ -1,0 +1,123 @@
+header-item {
+    position: fixed;
+    top: 0;
+    left:0;
+    width:100%;
+    z-index: 5 !important;
+}
+
+.chat-wrapper {
+    width: 100%;
+    padding-top: 12vh;
+    padding-bottom:8vh;
+    z-index: 1 !important;
+    overflow-y:scroll;
+}
+
+.chat-wrapper div {
+    width: 100%;
+    position: relative;
+    margin: 5%;
+    display: flex;
+}
+
+.chat-wrapper div p {
+    padding: 5%;
+    margin-right: 10%;
+    font-size: 1.2em;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 1em;
+    max-width: 60%;
+    word-wrap: break-word;
+}
+
+.chat-wrapper div.left {
+    flex-flow: column wrap;
+}
+
+.chat-wrapper div.left p {
+    background-color: var(--left-chat-color);
+}
+
+.chat-wrapper div.right {
+    flex-flow: column wrap-reverse;;
+}
+
+.chat-wrapper div.right p {
+    background-color: var(--right-chat-color);
+}
+
+.chat-wrapper div section{
+    height:2vh;
+    width:100%;
+    color: var(--left-chat-color);
+    margin-right:10%;
+    margin-top:1vh;
+    display:flex;
+}
+.chat-wrapper div.left section {
+    flex-flow:row nowrap;
+}
+.chat-wrapper div.right section {
+    flex-flow:row-reverse nowrap;
+}
+.chat-wrapper div section img{
+    height:100%;
+    border-radius:1em;
+}
+
+.chat-wrapper div section span{
+    color: var(--font-secondary-color);
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+footer {
+    background-color: var(--bg-light);
+    position: fixed;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    bottom: .5vh;
+    left: 0;
+    width: 100%;
+    height: 7vh;
+    padding-bottom: .5vh;
+    padding-top: .5vh;
+    z-index: 3
+}
+
+.txt {
+    width: 73%;
+    height: 60%;
+    margin: 0 3%;
+    padding-left: 2%;
+    font-size: 1.2em;
+    border: none;
+    padding: 2%;
+    background-color: var(--right-chat-color);
+    border-radius: 1em;
+}
+
+.send {
+    width: 6vh;
+    height: 6vh;
+    background-color: var(--right-chat-color);
+    border: none;
+    background-image: url("../../assets/icons/arrow.png");
+    background-size: contain;
+    border-radius: 50%;
+    transform: rotate(-180deg);
+}
+
+@media screen and (min-width: 600px) {
+  footer {
+    width:50%;
+    left:25%;
+  }
+  header-item{
+      margin-left: 25%;
+      width:50%;
+  }
+}

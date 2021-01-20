@@ -1,0 +1,144 @@
+header {
+    height: 9vh;
+    top: 0;
+    width: 90%;
+    padding-top: 5vh;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+header img {
+    height: 30%;
+}
+
+.title {
+    font-size: 4vh;
+    margin-left: 6%;
+}
+
+main {
+    position: relative;
+    padding-bottom: 7%;
+    padding-top: 2.5%;
+    height: fit-content;
+    width: 100%;
+}
+
+main div.box-wrapper {
+    margin: 5vh auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+main div.box {
+    display: inline-block;
+    height: 12vh;
+    width: 40%;
+    margin: 5%;
+    border-radius: .5em;
+    background-color: var(--bg-light);
+    -webkit-box-shadow: 0px 0px 20px -5px rgba(136, 136, 136, 0.76);
+    -moz-box-shadow: 0px 0px 20px -5px rgba(136, 136, 136, 0.76);
+    box-shadow: 0px 0px 20px -5px rgba(136, 136, 136, 0.76);
+    transition: all .2s;
+}
+
+main div.box div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 2% 0;
+    align-items: center;
+    flex-flow: column;
+    justify-content: center;
+    filter:invert(.5);
+}
+
+main div.box div img {
+    margin: 0 auto;
+}
+
+main div.box.active div {
+    color: var(--font-primary-color-invert) !important;
+    filter:none;
+}
+
+.active {
+    transform: scale(1.05);
+    background-color: var(--blue) !important;
+    -webkit-box-shadow: 0px 0px 89px -10px var(--dark-blue) !important;
+    -moz-box-shadow: 0px 0px 89px -10px var(--dark-blue) !important;
+    box-shadow: 0px 0px 89px -10px var(--dark-blue) !important;
+}
+
+input {
+    margin: 0 6%;
+    border: none;
+    height: 6vh;
+    padding-left: 5vh;
+    border-radius: .5em;
+    width: 78%;
+    font-size: 1.5em;
+    margin-top: 2vh;
+    -webkit-box-shadow: 0px 0px 20px -11px var(--shadow-color);
+    -moz-box-shadow: 0px 0px 20px -11px var(--shadow-color);
+    box-shadow: 0px 0px 20px -11pxvar(--shadow-color);
+    background: url("../../assets/icons/search-outline.png") no-repeat scroll;
+    background-size: 3vh;
+    background-position: 3% 55%;
+    filter:invert(.5);
+}
+
+tabs{
+    height:auto;
+}
+
+.placeholder{
+    height:50vh;
+    filter:invert(.5);
+}
+
+tab div img {
+    margin: 0 auto;
+}
+
+section, label {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    text-align: center;
+}
+
+img {
+    width: 20%;
+}
+
+.glass {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 5%;
+    z-index: 4;
+    position: fixed;
+}
+
+@media screen and (min-width: 600px) {
+    header {
+        width: 50% !important;
+    }
+}

@@ -1,0 +1,20 @@
+<div
+  class="glass"
+  [@openCloseGlass]="this.isOpen ? 'open' : 'close'"
+></div>
+<div
+  class="modal-wrapper"
+  [@openClose]="this.isOpen ? 'open' : 'close'"
+  (swipedown)="onSwipe($event)"
+>
+  <div class="modal" >
+    <img class="preview" [src]="this.prev" *ngIf="!this.post"  [ngClass]="{ invert: this.global.darkTheme }"/>
+    <img
+      class="loader"
+      [src]="this.global.LOADER_ICON"
+      *ngIf="!this.post && this.isLoading"
+      
+    />
+    <post-item *ngIf="post"  [post]="post" ></post-item>
+  </div>
+</div>

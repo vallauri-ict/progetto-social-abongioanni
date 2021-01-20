@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap');
+@font-face {
+    font-family: Monotone;
+    src: url("./../../assets/fonts/Monoton-Regular.ttf");
+}
+
+main {
+    width: 90%;
+    margin-left: 5%;
+    height: 100vh;
+    color: var(--font-primary-color);
+    padding-bottom: 10vh;
+    overflow: scroll;
+}
+
+main post-item {
+    position: relative;
+    left: -5%;
+}
+
+div{
+    color:var(--font-primary-color);
+}
+
+@media screen and (min-width: 600px) {
+    main {
+        width: 80%;
+        margin-left: 10%;
+    }
+}
