@@ -1,0 +1,5 @@
+# Node build artifacts
+# .gitignore
+node_modules
+static/uploads
+/security
