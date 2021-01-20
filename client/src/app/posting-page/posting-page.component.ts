@@ -78,7 +78,7 @@ export class PostingPageComponent implements OnInit {
     this.f = this.global.b64toBlob(realData, contentType,512);    
   }
 
-  setPost() {
+  setPost(event) {
     if (!this.file) {
       alert("Carica un file prima!");
       return;
@@ -106,6 +106,7 @@ export class PostingPageComponent implements OnInit {
         }
       },this.errorMethod);
     }
+    event.stopPropagation();
   }
 
   setDescription(str) {

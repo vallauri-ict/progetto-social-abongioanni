@@ -10,15 +10,27 @@
 
 .image {
     display: inline-block;
-    width: 30%;
+    width: 27.5%;
     height: 100%;
-    text-align: center;
+    position: relative;
+}
+.image div{
+    width: 10vh;
+    height:100%;
+    overflow: hidden;
+    margin:0 auto;
+    border-radius: 10%;
     position: relative;
 }
 
 .image img {
     height: 100%;
-    border-radius: 10%;
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
 }
 
 .details {

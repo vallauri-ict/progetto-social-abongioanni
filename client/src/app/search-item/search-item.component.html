@@ -1,9 +1,12 @@
 <section [routerLink]="'/profile/' + this.user._id">
   <div
-    style="width:20%;text-align: center"
+    style="width: 20%; text-align: center"
     [routerLink]="'profile/' + this.user._id"
+    class="image"
   >
-    <img [src]="this.user.image" />
+    <div>
+      <img [src]="this.user.image" />
+    </div>
   </div>
   <div
     class="datas"
@@ -15,7 +18,6 @@
     <div
       class="name"
       *ngIf="this.global.profile.following.includes(this.user._id)"
-      
     >
       Segui già
     </div>

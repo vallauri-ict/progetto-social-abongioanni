@@ -12,8 +12,8 @@
 }
 
 :root {
-    --bg-light: #efefef;
-    --bg-dark: #111;
+    --bg-light: #fafafa;
+    --bg-dark: #050505;
     --font-primary-color: #111;
     --font-primary-color-invert:#fff;
     --font-secondary-color: #888;
@@ -28,10 +28,10 @@
     --disabled-color:#ccc;
     --shadow-color:rgba(136, 136, 136, 1);
     --dark-grey: #393B41;
-    --gery:#4e4e53;
+    --grey:#4e4e53;
     --light-grey:#dedede;
-    --left-chat-color:#ccc;
-    --right-chat-color:#ddd;
+    --left-chat-color:#ddd;
+    --right-chat-color:#eee;
     --transparent:#00000000;
 }
 

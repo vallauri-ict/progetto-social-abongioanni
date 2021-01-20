@@ -1,23 +1,30 @@
 <header-item>Add Post</header-item>
-<main [ngClass]=" { 'invert' : this.global.darkTheme}">
-  <label [for]="!this.secondStep?'file':''">
+<main [ngClass]="{ invert: this.global.darkTheme }">
+  <label [for]="!this.secondStep ? 'file' : ''">
     <img
       *ngIf="!this.file"
-      
       class="placeholder"
       [src]="this.global.NOPHOTO_ICON"
     />
     <img
       *ngIf="this.file"
-      
       [src]="this.file"
-      [ngClass]=" { 'invert' : this.global.darkTheme && this.file}"
+      [ngClass]="{ invert: this.global.darkTheme && this.file }"
     />
-    <div class="forward" (click)="setPost()" *ngIf="this.file" > 
-      <img [src]="this.loading?this.global.LOADER_ICON:this.global.ARROW_ICON" *ngIf="this.file" >
+    <div
+      class="forward"
+      (click)="setPost($event)"
+      *ngIf="this.file"
+      [@ngIfAnimation]
+    >
+      <img
+        [src]="this.loading ? this.global.LOADER_ICON : this.global.ARROW_ICON"
+        *ngIf="this.file"
+        [@ngIfAnimation]
+      />
     </div>
-    <div class="backward" *ngIf="this.secondStep"  (click)="goBack()"> 
-      <img [src]="this.global.ARROW_ICON" *ngIf="this.file" >
+    <div class="backward" *ngIf="this.secondStep" (click)="goBack()">
+      <img [src]="this.global.ARROW_ICON" *ngIf="this.file" />
     </div>
     <input
       type="file"
@@ -28,19 +35,15 @@
   </label>
   <section
     *ngIf="this.file && !this.secondStep"
-    
-    [ngClass]=" { 'invert' : this.global.darkTheme}"  >
-  <article>
-    <div>
-      <web-photo-filter
-        [src]="this.fileOriginal"
-      ></web-photo-filter>
-      <img [src]="this.fileOriginal" />
-      <div class="hover"  (click)="changeFilter('original')">
-        Original
+    [ngClass]="{ invert: this.global.darkTheme }"
+  >
+    <article>
+      <div>
+        <web-photo-filter [src]="this.fileOriginal"></web-photo-filter>
+        <img [src]="this.fileOriginal" />
+        <div class="hover" (click)="changeFilter('original')">Original</div>
       </div>
-    </div>
-  </article>
+    </article>
     <article *ngFor="let filter of this.filters">
       <div>
         <web-photo-filter
@@ -50,14 +53,13 @@
         ></web-photo-filter>
         <img [src]="this.src[filter]" />
         <div class="hover" (click)="changeFilter(filter)">
-          {{filter}}
+          {{ filter }}
         </div>
       </div>
     </article>
   </section>
   <input
     *ngIf="this.secondStep"
-    
     #description
     (keyup)="setDescription(description.value)"
     style="margin-top: 5%"
@@ -66,7 +68,6 @@
   />
   <input
     *ngIf="this.secondStep"
-    
     #tag
     (keyup)="setTag(tag.value)"
     type="text"

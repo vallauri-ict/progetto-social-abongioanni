@@ -1,6 +1,8 @@
 <div class="wrapper" [routerLink]="'/chat/' + direct._id">
   <div class="image">
-    <img [src]="direct.image" />
+    <div>
+      <img [src]="direct.image" />
+    </div>
   </div>
   <div class="details" [ngClass]="{ invert: this.global.darkTheme }">
     <div class="name">{{ direct.name }}</div>

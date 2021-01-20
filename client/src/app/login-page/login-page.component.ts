@@ -15,9 +15,9 @@ export class LoginPageComponent implements OnInit {
 
   constructor(private utils: DataService, private router: Router, public global: Global, private socket: SocketService) {
     this.isLoading = true;
-    if (this.getCookie("token")) {
+    this.utils.getCookie((data)=>{
       this.router.navigate(['/home']);
-    }
+    },this.errorMethod);
   }
 
   values = {
@@ -35,22 +35,6 @@ export class LoginPageComponent implements OnInit {
   isLogin = true;
 
   ngOnInit(): void { }
-
-  getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
 
   setUsername(value) {
     this.username = value;
